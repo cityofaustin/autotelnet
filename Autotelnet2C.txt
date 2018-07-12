@@ -1,0 +1,52 @@
+'First block will set up error messages and will continue past error messages
+
+<job>
+<script language="VBScript">
+Option Explicit 
+On Error Resume Next
+
+'Next set up command prompt for telnet as an object (i.e. define cmd)
+
+Dim WshShell
+set WshShell=CreateObject("WScript.Shell")
+WshShell.run "cmd.exe"
+
+'Define and ask for IP address
+
+Dim IPaddr
+IPaddr= InputBox("Enter IP")
+
+'Next block alternates between sending commands via telnet and sleeping (due to lag)
+
+WScript.Sleep 100
+'Send commands to the window as needed - IP and commands need to be customized
+'Step 1 - Telnet to remote IP'
+WshShell.SendKeys "C:"
+WshShell.SendKeys ("{Enter}")
+WScript.sleep 200
+WshShell.SendKeys "telnet " 
+WScript.sleep 100
+WshShell.Sendkeys IPaddr
+WshShell.SendKeys ("{Enter}")
+WScript.Sleep 100
+
+'Step 2 - Issue Commands with pauses'
+WshShell.SendKeys "austin"
+WScript.Sleep 100
+WshShell.SendKeys ("{Enter}")
+WScript.Sleep 100
+WshShell.SendKeys "austin"
+WScript.Sleep 100
+WshShell.SendKeys ("{Enter}")
+WScript.Sleep 100
+WshShell.SendKeys "0"
+WScript.Sleep 100
+WshShell.SendKeys "1"
+WScript.Sleep 100
+
+
+'Last block will end script and close out window any background process but leave telnet open
+
+WScript.Qui
+</script>
+</job>
