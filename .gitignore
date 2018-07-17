@@ -1,3 +1,4 @@
 .idea/
 __pycache__/
 telnet_example.py
+top_secrets.py
